@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 
 const post = mongoose.model("Post")
 
-router.post("/login", async (req, res) => {
+router.post("/register", async (req, res) => {
     try { 
         const post1 = new post();
         post1.name = req.body.name;
@@ -20,7 +20,7 @@ router.post("/login", async (req, res) => {
 });
 
 //using post method
-router.post("/register", async(req, res) => {
+router.post("/login", async(req, res) => {
     try {
         const post1 = await post.find({
             email: req.body.email,
