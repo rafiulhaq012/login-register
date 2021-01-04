@@ -7,7 +7,8 @@ const post_scheme = mongoose.Schema({
     },
     email:{
         type:String,
-        required:"Email is required"
+        required:"Email is required",
+        unique: true
     },
     phone:{
         type:Number,

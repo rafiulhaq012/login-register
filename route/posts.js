@@ -10,12 +10,18 @@ router.post("/register", async (req, res) => {
         post1.email = req.body.email;
         post1.phone = req.body.phone;
         post1.password = req.body.password;
+        // if (req.email.unique=true) {
+        //     res.send('asdasdasdasd')
+        // }
         await post1.save();    
         res.send(post1)    
     } catch (error) {
         console.log('Post - ERROR',error);
-        res.status(500)
+        return res.status(500).json({msg: 
+        'error'
+        })
     }
+
 
 });
 
@@ -26,6 +32,11 @@ router.post("/login", async(req, res) => {
             email: req.body.email,
             password: req.body.password,
         })
+        if (!post1) {
+            res.status(400).json({
+                msg:'ERROR'
+            })
+        } 
         res.send(post1)        
     } catch (error) {
         console.log('Get - ERROR',error);
